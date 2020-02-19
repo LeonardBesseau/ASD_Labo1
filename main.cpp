@@ -1,7 +1,7 @@
 //
 //  Labo1.cpp
 //
-//	/* NOMS DES ETUDIANTS ICI */
+//	@author Besseau Zwick Viotti
 //
 
 #include <stdlib.h>
