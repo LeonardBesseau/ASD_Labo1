@@ -2,3 +2,8 @@ Fonction 1
 Meilleur cas O(1)
 Pire cas O(n)
 Cas Moyen O(n)
+
+Function 2
+Meilleur cas O(n^2)
+Pire cas O(n^2)
+Cas Moyen O(n^2)
