@@ -4,6 +4,51 @@ Pire cas O(n)
 Cas Moyen O(n)
 
 Function 2
+La comparaison du for compte elle ?
 Meilleur cas O(n^2)
 Pire cas O(n^2)
 Cas Moyen O(n^2)
+La fonction effectue le me nombre de comparaison,
+peut-importe comment les données sont ordonnées
+
+Fonction 3
+Recherche dicotomique
+Meilleur cas O(1)
+Le log est un log en base 2
+A chaque iteration , le nombre de éléments possible est divisé par 2
+==> log en base 2
+
+// Nombre de fois pour arriver à 1 élément équivalent à
+n/2^k = 1 <==> 2^k = n <==> log(2^k) = log(n) <==> k = log(n)
+// log(2) = 1
+Pire cas O(log(n))
+Cas Moyen O(log(n))
+
+exemple avec un tableau de 15 éléments
+indexé ainsi [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14]
+iter 1 A[7] ~6.25%
+iter 2 A[3], A[11] ~12.5%
+iter 3 A[1], A[5], A[9], A[13] ~25%
+iter 4 A[0], A[2], A[4], A[6], A[8], A[10], A[12], A[14]
+
+iter 1 : 1/n (un seul cas possible)
+iter 2 : 2/n (2 cas possible)
+iter 3 : 4/n
+iter 4 : 8/n
+==>
+iter n : 2^(x-1)/n
+Ce qui fait que environ la moitié des éléments sont trouvés avec la derniere iteration
+==> cas moyen = Pire cas = log(n)
+
+Fonction 1
+Meilleur cas O(1)
+Pire cas O(n)
+Cas Moyen O(n)
+
+F(0) = 1
+F(1) = 3*F(0)
+F(n) = 3*F(n-1)
+F(n) = 3*3*F(n-2)
+F(n) = 3^k*F(n-k)
+F(n) = 3^n*F(0)
+F(n) = 3^n
