@@ -8,6 +8,7 @@
 #include <vector>
 #include <random>
 #include <ctime>
+#include <chrono>
 
 using namespace std;
 
@@ -21,9 +22,9 @@ using namespace std;
  * @param val valeur à chercher
  * @return la position de la valeur dans le vector si trouvé, -1 sinon
  */
-size_t chercherPosition( const vector<int>& v , int val ) {
-    for(size_t i = 0; i < v.size(); ++i) {
-        if(v.at(i) == val)
+size_t chercherPosition(const vector<int> &v, int val) {
+    for (size_t i = 0; i < v.size(); ++i) {
+        if (v.at(i) == val)
             return i;
     }
     return -1;
@@ -37,14 +38,14 @@ size_t chercherPosition( const vector<int>& v , int val ) {
  *
  * @param v vector à trier
  */
-void trier( vector<int>& v ) {
-    if(v.empty()) return;
+void trier(vector<int> &v) {
+    if (v.empty()) return;
 
-    for(int a : v) {
+    for (int a : v) {
         auto j = v.begin();
         auto k = j++;
-        for(; j != v.end(); k = j++ )
-            if(*k > *j )
+        for (; j != v.end(); k = j++)
+            if (*k > *j)
                 swap(*k, *j);
     }
 }
@@ -60,16 +61,16 @@ void trier( vector<int>& v ) {
  * @param val valeur à chercher
  * Retourne true si la valeur est contenue dans le vector, false sinon.
  */
-bool chercherSiContient( const vector<int>& v , int val ) {
+bool chercherSiContient(const vector<int> &v, int val) {
     auto first = v.begin();
     auto last = v.end();
 
-    while( first != last ) {
-        auto mid = first + ( last - first ) / 2;
-        if(*mid == val) {
+    while (first != last) {
+        auto mid = first + (last - first) / 2;
+        if (*mid == val) {
             return true;
-        } else if(*mid < val) {
-            first = mid+1;
+        } else if (*mid < val) {
+            first = mid + 1;
         } else {
             last = mid;
         }
@@ -83,11 +84,11 @@ bool chercherSiContient( const vector<int>& v , int val ) {
  * @param n
  * @return
  */
-unsigned long long f( unsigned n ) {
+unsigned long long f(unsigned n) {
 
-    if( n == 0 ) return 1;
+    if (n == 0) return 1;
 
-    return f(n-1) + f(n-1) + f(n-1);
+    return f(n - 1) + f(n - 1) + f(n - 1);
 }
 
 /**
@@ -95,9 +96,9 @@ unsigned long long f( unsigned n ) {
  *
  * @param v
  */
-void g( vector<int>& v ) {
-    for(size_t i = 0; i < v.size(); ++i) {
-        for(size_t j = v.size() - 1; j > 0; j /= 2 ) {
+void g(vector<int> &v) {
+    for (size_t i = 0; i < v.size(); ++i) {
+        for (size_t j = v.size() - 1; j > 0; j /= 2) {
             v.at(i) += v.at(j);
         }
     }
@@ -112,11 +113,11 @@ void g( vector<int>& v ) {
  * @param maxVal valeur maximale des données
  * @return vector rempli de N valeurs aléatoires.
  */
-vector<int> random( size_t N , int maxVal ) {
+vector<int> random(size_t N, int maxVal) {
 
     vector<int> v;
-    for(size_t i = 0; i < N; ++i) {
-        v.push_back(1+rand()%maxVal);
+    for (size_t i = 0; i < N; ++i) {
+        v.push_back(1 + rand() % maxVal);
     }
 
     return v;
@@ -131,19 +132,43 @@ vector<int> random( size_t N , int maxVal ) {
  * @param maxVal valeur maximale des données
  * @return vector rempli de N valeurs aléatoires.
  */
-vector<int> random2( size_t N , int maxVal ) {
+vector<int> random2(size_t N, int maxVal) {
 
     vector<int> v;
-    for(size_t i = 0; i < N; ++i) {
-        v.insert(v.begin(),1+rand()%maxVal);
+    for (size_t i = 0; i < N; ++i) {
+        v.insert(v.begin(), 1 + rand() % maxVal);
     }
 
     return v;
 }
 
+#include <iostream>
+
 int main() {
     //initialisation du générateur aléatoire
-    srand (time(NULL));
+    srand(time(NULL));
+    std::vector<int> point;
+    std::vector<double> timer;
+    timer.resize(20);
+    point.resize(20);
+    for (int i = 0; i < 20; ++i) {
+        point.at(i) = i;
+    }
+
+    for (int a : point) {
+        cout << "Point " << a << endl;
+        chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+        f(a);
+        chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
+        timer.at(a) = chrono::duration_cast<chrono::nanoseconds>(
+                t2 - t1).count();
+    }
+    for (int a : point) {
+        std::cout << a << " : " << timer.at(a) << endl;
+    }
+
+
+
 
     //...
 }
