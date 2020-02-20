@@ -40,7 +40,7 @@ iter n : 2^(x-1)/n
 Ce qui fait que environ la moitié des éléments sont trouvés avec la derniere iteration
 ==> cas moyen = Pire cas = log(n)
 
-Fonction 1
+Fonction 4
 Meilleur cas O(1)
 Pire cas O(3^n)
 Cas Moyen O(3^n)
@@ -75,3 +75,29 @@ temps mesuré pour chaque calcul (A part le premier, on peut voir une augmentati
 17 : 3.28443e+08
 18 : 9.59672e+08
 19 : 2.87414e+09
+
+
+Fonction 5
+
+******************** PAS SUR A VERIFIER **************************************************************************
+
+Meilleur cas O(log(n!))
+Pire cas O(log(n!))
+Cas Moyen O(log(n!))
+
+Log(n) + log(n-1) + log(n-2) + log(n-3) + log (n-4)
+log(n!)
+
+Fonction 6
+Meilleur cas O(n)
+Pire cas O(n) // Peut etre n^2 à demander si cest n* n ou n+n
+Cas Moyen O(n)
+
+l'opération est effecuté n fois
+En temps normal, rien de special mais lorsque push back realloue des resources
+ce qui transforme l'opération en linéaire et non constante
+
+Fonction 6
+Meilleur cas O(n^2)
+Pire cas O(n^2) // Peut etre n^3 à demander si cest n*n*n ou n+n+n
+Cas Moyen O(n^2)

@@ -9,6 +9,8 @@
 #include <random>
 #include <ctime>
 #include <chrono>
+#include <iostream>
+
 
 using namespace std;
 
@@ -142,15 +144,12 @@ vector<int> random2(size_t N, int maxVal) {
     return v;
 }
 
-#include <iostream>
-
-int main() {
-    //initialisation du générateur aléatoire
-    srand(time(NULL));
+void test4(){
     std::vector<int> point;
     std::vector<double> timer;
-    timer.resize(20);
-    point.resize(20);
+    const int nbInst = 20;
+    timer.resize(nbInst);
+    point.resize(nbInst);
     for (int i = 0; i < 20; ++i) {
         point.at(i) = i;
     }
@@ -166,9 +165,64 @@ int main() {
     for (int a : point) {
         std::cout << a << " : " << timer.at(a) << endl;
     }
+}
+
+void test5(){
+    std::vector<int> point;
+    std::vector<vector<int>> list;
+    std::vector<double> timer;
+    const int nbInst = 200;
+    timer.resize(nbInst);
+    point.resize(nbInst);
+    list.resize(nbInst);
+    for (int i = 0; i < nbInst; ++i) {
+        point.at(i) = i;
+        list.at(i).resize(i);
+        for (int j = 0; j < i; ++j) {
+            list.at(i).at(j)= j;
+        }
+    }
+
+    for (int a : point) {
+        chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+        g(list.at(a));
+        chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
+        timer.at(a) = chrono::duration_cast<chrono::nanoseconds>(
+                t2 - t1).count();
+    }
+    for (int a : point) {
+        std::cout << a << " : " << timer.at(a) << endl;
+    }
+}
+
+
+void test6(){
+    std::vector<int> point;
+    std::vector<double> timer;
+    const int nbInst = 200;
+    timer.resize(nbInst);
+    point.resize(nbInst);
+    for (int i = 0; i < nbInst; ++i) {
+        point.at(i) = i;
+    }
+
+    for (int a : point) {
+        cout << "Point " << a << endl;
+        chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+        random(a, 256);
+        chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
+        timer.at(a) = chrono::duration_cast<chrono::nanoseconds>(
+                t2 - t1).count();
+    }
+    for (int a : point) {
+        std::cout << a << " : " << timer.at(a) << endl;
+    }
+}
+
+int main() {
+    //initialisation du générateur aléatoire
+    srand(time(NULL));
 
 
 
-
-    //...
 }
