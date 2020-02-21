@@ -97,7 +97,7 @@ l'opération est effecuté n fois
 En temps normal, rien de special mais lorsque push back realloue des resources
 ce qui transforme l'opération en linéaire et non constante
 
-Fonction 6
+Fonction 7
 Meilleur cas O(n^2)
 Pire cas O(n^2) // Peut etre n^3 à demander si cest n*n*n ou n+n+n
 Cas Moyen O(n^2)
