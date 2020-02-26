@@ -259,7 +259,7 @@ void test6(){
 int main() {
     //initialisation du générateur aléatoire
     srand(time(NULL));
-    test1();
+    cout << f(2);
 
 
 }
