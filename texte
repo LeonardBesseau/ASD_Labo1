@@ -90,7 +90,7 @@ log(n!)
 
 Fonction 6
 Meilleur cas O(n)
-Pire cas O(n+m) // ou n+m
+Pire cas O(n)
 Cas Moyen O(n)
 
 l'opération est effecuté n fois
