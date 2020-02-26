@@ -1,8 +1,17 @@
-//
-//  Labo1.cpp
-//
-//	@author Besseau Zwick Viotti
-//
+/* ---------------------------
+Laboratoire : 01
+Fichier : main.cpp
+Auteur(s) : Besseau Zwick Vioti
+Date : 26-02-2020
+
+But :
+
+Remarque(s) :
+
+Compilateur : gcc version 7.4.0
+
+--------------------------- */
+
 
 #include <stdlib.h>
 #include <vector>
@@ -144,6 +153,34 @@ vector<int> random2(size_t N, int maxVal) {
     return v;
 }
 
+void test1(){
+    std::vector<int> point;
+    std::vector<vector<int>> list;
+    std::vector<double> timer;
+    const int nbInst = 20000;
+    timer.resize(nbInst);
+    point.resize(nbInst);
+    list.resize(nbInst);
+    for (int i = 0; i < nbInst; ++i) {
+        point.at(i) = i;
+        list.at(i).resize(i);
+        for (int j = 0; j < i; ++j) {
+            list.at(i).at(j)= j;
+        }
+    }
+
+    for (int a : point) {
+        chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+        chercherPosition(list.at(a), 7);
+        chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
+        timer.at(a) = chrono::duration_cast<chrono::nanoseconds>(
+                t2 - t1).count();
+    }
+    for (int a : point) {
+        std::cout << a << " : " << timer.at(a) << endl;
+    }
+}
+
 void test4(){
     std::vector<int> point;
     std::vector<double> timer;
@@ -222,7 +259,7 @@ void test6(){
 int main() {
     //initialisation du générateur aléatoire
     srand(time(NULL));
-
+    test1();
 
 
 }

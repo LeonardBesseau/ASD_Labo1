@@ -1,13 +1,13 @@
 Fonction 1
 Meilleur cas O(1)
 Pire cas O(n)
-Cas Moyen O(n)
+Cas Moyen O(n) // (n/2)
 
 Function 2
-La comparaison du for compte elle ?
 Meilleur cas O(n^2)
 Pire cas O(n^2)
 Cas Moyen O(n^2)
+n-1 comparsion par élément
 La fonction effectue le me nombre de comparaison,
 peut-importe comment les données sont ordonnées
 
@@ -90,7 +90,7 @@ log(n!)
 
 Fonction 6
 Meilleur cas O(n)
-Pire cas O(n) // Peut etre n^2 à demander si cest n* n ou n+n
+Pire cas O(n+m) // ou n+m
 Cas Moyen O(n)
 
 l'opération est effecuté n fois
@@ -99,5 +99,5 @@ ce qui transforme l'opération en linéaire et non constante
 
 Fonction 7
 Meilleur cas O(n^2)
-Pire cas O(n^2) // Peut etre n^3 à demander si cest n*n*n ou n+n+n
+Pire cas O(n^2)
 Cas Moyen O(n^2)
