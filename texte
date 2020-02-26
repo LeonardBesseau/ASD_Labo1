@@ -81,9 +81,9 @@ Fonction 5
 
 ******************** PAS SUR A VERIFIER **************************************************************************
 
-Meilleur cas O(log(n!))
-Pire cas O(log(n!))
-Cas Moyen O(log(n!))
+Meilleur cas O(n*log(n))
+Pire cas O(n*log(n))
+Cas Moyen O(n*log(n))
 
 Log(n) + log(n-1) + log(n-2) + log(n-3) + log (n-4)
 log(n!)
